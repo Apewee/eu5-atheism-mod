@@ -123,10 +123,13 @@ same age.
 
 ## Installation
 
-Copy the `atheism_mod` folder into your EU5 mod directory:
+Download the repository (or `git clone` it) so that the mod folder sits inside your EU5 mod
+directory under the name `eu5-atheism-mod`:
 
-- Windows: `Documents/Paradox Interactive/Europa Universalis V/mod/atheism_mod`
-- Linux (Proton): `.../steamapps/compatdata/3450310/pfx/drive_c/users/steamuser/Documents/Paradox Interactive/Europa Universalis V/mod/atheism_mod`
+- Windows: `Documents/Paradox Interactive/Europa Universalis V/mod/eu5-atheism-mod`
+- Linux (Proton): `.../steamapps/compatdata/3450310/pfx/drive_c/users/steamuser/Documents/Paradox Interactive/Europa Universalis V/mod/eu5-atheism-mod`
+
+The `.metadata` folder must stay inside it — that is what the launcher reads.
 
 Enable it in the mod list, then start a campaign. The decision appears in the **Religious**
 decisions tab for any Lutheran country.
