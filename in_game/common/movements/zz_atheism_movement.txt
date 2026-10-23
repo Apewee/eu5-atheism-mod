@@ -1,0 +1,148 @@
+﻿# The Atheism movement, the counterpart of the vanilla Lutheranism and Hellenism
+# movements. It is seeded by the "Sponsor a Radical Thinker" decision in the capital
+# and then spreads through the Christian population on its own.
+atheism_movement = {
+	religion = atheism
+
+	# Only eligible once Atheism has been founded by the decision.
+	potential = {
+		religion:atheism = { is_religion_enabled = yes }
+	}
+
+	# Never spawned by the monthly scheduler — the decision spawns it.
+	monthly_spawn_chance = { value = 0 }
+	spawn = { }
+
+	# A single well-read thinker can carry the argument a long way in a city.
+	environmental_infection = { value = 0.05 }
+
+	# Reason spreads through salons, presses and universities, a little slower
+	# than the Reformation did.
+	r0 = {
+		value = { 0.0 0.010 }
+
+		if = {
+			limit = { exists = root }
+
+			# Urban tier — graduated, mutually exclusive ranks.
+			if = {
+				limit = { location_rank ?= location_rank:town }
+				multiply = 1.05
+			}
+			if = {
+				limit = { location_rank ?= location_rank:city }
+				multiply = 1.15
+			}
+			if = {
+				limit = { location_rank ?= location_rank:megalopolis }
+				multiply = 1.20
+			}
+
+			# The printed pamphlet is the vector of the age.
+			if = {
+				limit = { owner ?= { has_embraced_institution = institution:printing_press } }
+				multiply = 1.25
+			}
+			if = {
+				limit = { owner ?= { has_advance = printing_press_advance } }
+				multiply = 1.10
+			}
+
+			# A state that has separated church from government gives reason room to breathe.
+			if = {
+				limit = { owner ?= { has_policy = separate_clergy_from_state_policy } }
+				multiply = 1.20
+			}
+
+			# Cluster momentum — neighbor location is already majority atheist.
+			if = {
+				limit = { any_neighbor_location = { dominant_religion ?= religion:atheism } }
+				multiply = 1.10
+			}
+
+			add = {
+				desc = movement_factor_scriptorium
+				if = { limit = { has_building_with_at_least_one_level = scriptorium }           value = 0.0010 }
+			}
+			add = {
+				desc = movement_factor_printing_press_shop
+				if = { limit = { has_building_with_at_least_one_level = printing_press_shop }   value = 0.0020 }
+			}
+			add = {
+				desc = movement_factor_paper_guild
+				if = { limit = { has_building_with_at_least_one_level = paper_guild }           value = 0.0005 }
+			}
+			add = {
+				desc = movement_factor_paper_workshop
+				if = { limit = { has_building_with_at_least_one_level = paper_workshop }        value = 0.0010 }
+			}
+			add = {
+				desc = movement_factor_university
+				if = { limit = { has_building_with_at_least_one_level = university }            value = 0.0015 }
+			}
+			add = {
+				desc = movement_factor_friendly_with_pope
+				if = { limit = { owner ?= { opinion = { target = c:PAP value > 100 } } }        value = -0.0020 }
+			}
+			add = {
+				desc = movement_factor_no_cardinals
+				if = { limit = { owner ?= { num_cardinals = 0 } }                               value = 0.0010 }
+			}
+		}
+		else = {
+			add = { desc = movement_factor_scriptorium          value = 0.0010 }
+			add = { desc = movement_factor_printing_press_shop  value = 0.0020 }
+			add = { desc = movement_factor_paper_guild          value = 0.0005 }
+			add = { desc = movement_factor_paper_workshop       value = 0.0010 }
+			add = { desc = movement_factor_university           value = 0.0015 }
+			add = { desc = movement_factor_friendly_with_pope   value = -0.0020 }
+			add = { desc = movement_factor_no_cardinals         value = 0.0010 }
+		}
+	}
+
+	calc_interval_days = { 20 40 }
+
+	# Atheism is a rejection of revealed religion, so only Christians can be argued
+	# out of their faith by it.
+	required_religion_groups = { christian }
+
+	development = positive
+	literacy = positive
+	local_control = negative	# a firmly governed province is harder to talk out of its faith
+	pop_satisfaction = negative
+
+	# The literate urban middle is the natural audience; the clergy convert from within.
+	specific_pop_type_effect = { pop_type = burghers  multiplier = 2.0 }
+	specific_pop_type_effect = { pop_type = nobles    multiplier = 1.5 }
+	specific_pop_type_effect = { pop_type = clergy    multiplier = 1.2 }
+	specific_pop_type_effect = { pop_type = peasants  multiplier = 1.2 }
+	specific_pop_type_effect = { pop_type = laborers  multiplier = 1.0 }
+	specific_pop_type_effect = { pop_type = slaves    multiplier = 0 }
+
+	# 5% of a location's population must be atheist before it seeds neighbours.
+	location_spread_threshold = { value = 0.05 }
+
+	map_color = {
+		if = {
+			limit = {
+				"religion_percentage(religion:atheism)" = 0
+			}
+			value = define:NMapColors|MAP_COLOR_NULL
+		}
+		else_if = {
+			limit = {
+				dominant_religion = religion:atheism
+			}
+			value = define:NMapColors|MAP_COLOR_HIGH
+		}
+		else_if = {
+			limit = {
+				"religion_percentage(religion:atheism)" > 0.05
+			}
+			value = define:NMapColors|MAP_COLOR_MID
+		}
+		else = {
+			value = define:NMapColors|MAP_COLOR_LOW
+		}
+	}
+}

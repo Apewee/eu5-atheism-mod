@@ -1,0 +1,29 @@
+﻿# The Atheist state's defining reform: the state itself takes the place of the church.
+# It grants the War of Reason casus belli against every revealed faith and a permanent
+# trickle of research progress for the state's academies.
+atheism_supremacy_of_reason = {
+	age = age_4_reformation
+
+	potential = {
+		religion = religion:atheism
+	}
+
+	allow = {
+	}
+
+	country_modifier = {
+		# +0.10 base research progress every month
+		research_speed = 0.1
+		stability_cost_efficiency = 0.05
+	}
+
+	on_activate = {
+		unlock_casus_belli_effect = { type = cb_atheism_war_of_reason }
+	}
+
+	on_deactivate = {
+		lock_casus_belli_effect = { type = cb_atheism_war_of_reason }
+	}
+
+	years = 2
+}

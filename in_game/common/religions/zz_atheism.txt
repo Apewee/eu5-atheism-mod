@@ -1,0 +1,28 @@
+﻿# Atheism is created by the "Sponsor a Radical Thinker" decision.
+# It is deliberately not tied to any revealed religion: it is a state philosophy of reason.
+atheism = {
+	color = color_atheism
+	group = atheist_group
+
+	enable = 9999.1.1
+
+	religious_aspects = 3
+	has_religious_influence = no
+	ai_wants_convert = no
+
+	definition_modifier = {
+		# The five tenets of the Atheist state
+		global_clergy_estate_power = -5.0
+		global_crown_estate_power = 1.0
+		tolerance_heathen = 4
+		tolerance_heretic = 4
+	}
+
+	opinions = {
+	}
+
+	# Keep the visuals of the country that adopted it.
+	tags = {
+		western_christian_gfx christian_gfx
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"name": "Age of Reason: Atheism",
+	"id": "atheism_mod",
+	"version": "1.2.0",
+	"supported_game_version": "1.4.*",
+	"short_description": "Adds the Atheism religion with its own advance tree and six religious aspects, the Atheism movement, the Supremacy of Reason reform and War of Reason casus belli, three Free Thinker privileges and two privileges for each of the noble, burgher and commoner estates.",
+	"tags": [
+		"Religions"
+	],
+	"relationships": [],
+	"game_custom_data": {
+		"replace_paths": []
+	}
+}

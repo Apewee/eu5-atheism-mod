@@ -1,0 +1,26 @@
+﻿# The War of Reason: the religious casus belli of an Atheist state.
+# It is unlocked by the Supremacy of Reason government reform and can be declared on
+# any country that still answers to a revealed religion.
+cb_atheism_war_of_reason = {
+	years = 25
+
+	create_visible = {
+		has_variable = unlocked_casus_belli_cb_atheism_war_of_reason
+		NOT = { religion = scope:target.religion }
+	}
+
+	declare_enabled = {
+		NOT = { religion = scope:target.religion }
+	}
+
+	# Scopes are actor/recipient for countries, while root = province checked.
+	province = {
+		any_location_in_province = {
+			always = yes
+		}
+	}
+
+	custom_tags = { religious_casus_belli }
+
+	war_goal_type = religious_conquer_province
+}

@@ -1,0 +1,3 @@
+﻿colors = {
+	color_atheism = rgb { 126 132 146 }
+}
