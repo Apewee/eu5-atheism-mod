@@ -143,8 +143,7 @@ decisions tab for any Lutheran country.
 ## Art credits
 
 All illustrations are public-domain paintings and engravings from Wikimedia Commons, cropped and
-converted to DDS. The complete source list with licensing is in [CREDITS.md](CREDITS.md); the
-modding workspace's `art-src/` and `tools/build_art.sh` can regenerate every texture.
+converted to DDS. The complete source list with licensing is in [CREDITS.md](CREDITS.md).
 
 - *A Philosopher Lecturing on the Orrery* — Joseph Wright of Derby, 1766 (decision banner).
 - *The Alchemist Discovering Phosphorus* — Joseph Wright of Derby, 1771 (Sponsored Free Thinking
