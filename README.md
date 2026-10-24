@@ -73,7 +73,8 @@ Two new privileges for each of the other three estates, available only to Atheis
 
 **Government reform — Supremacy of Reason**
 
-Available to Atheist states from the Reformation age onwards:
+Available to Atheist states as soon as they adopt Atheism — no age requirement, since the
+radical thinker decision can fire before the Reformation age:
 
 - **Ability to declare religious wars** — unlocks the *War of Reason* casus belli against any
   country that still follows a revealed religion. It is a religious casus belli (`religious_casus_belli`),
